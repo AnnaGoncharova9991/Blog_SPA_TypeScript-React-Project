@@ -4,14 +4,14 @@ import { AuthActionType } from "../../actions/authActionCreators";
 import { IAuthResponseActivatedUserData } from '../../../types/authTypes';
 
 interface IInitialAuthState {
-  data: IAuthResponseActivatedUserData | {};
+  data: IAuthResponseActivatedUserData;
   isLoading: boolean;
   error: null | string;
   isAuth: boolean;
 }
 
 const initialState: IInitialAuthState = {
-  data: {},
+  data: {} as IAuthResponseActivatedUserData,
   isLoading: false,
   error: null,
   isAuth: false,
