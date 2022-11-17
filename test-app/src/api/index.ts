@@ -4,6 +4,7 @@ import { config } from "process";
 import { refreshToken } from "../services/authServices";
 
 export const BASE_API = "https://studapi.teachmeskills.by";
+export const BASE_CONTENT_API = "https://api.spaceflightnewsapi.net";
 
 export const axiosPrivateAuth = axios.create({
   baseURL: BASE_API,
@@ -54,3 +55,7 @@ axiosPrivateAuth.interceptors.response.use(
     }
   }
 );
+
+export const axiosContent = axios.create({
+  baseURL: BASE_CONTENT_API,
+});

@@ -1,0 +1,16 @@
+@import "../../global.scss";
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+  padding: 72px 0;
+
+  li {
+    margin: 0 15px 10px 15px;
+    li:nth-last-child(n) {
+      margin-bottom: 0px;
+    }
+  }
+}

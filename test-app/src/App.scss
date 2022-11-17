@@ -1,8 +1,4 @@
-@import './components/Input/Input.scss';
-@import './pages/LoginPage/LoginPage.scss';
-@import './components/Layout/Footer/Footer.scss';
-
-
+@import './global.scss';
 
 * {
     box-sizing: border-box;
@@ -12,13 +8,18 @@
     list-style: none;
 }
 
+body{
+    font-size: 16px;
+    background-color: $secondaryExrtaLightColor;
+    position: relative;
+}
+
 .container {
     max-width: 1170px;
     z-index: 2;
     margin: auto;
     padding: 0 15px;
     position: relative;
-    background-color: aqua;
     cursor: pointer;
 }
 

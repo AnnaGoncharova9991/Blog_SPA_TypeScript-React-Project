@@ -1,0 +1,10 @@
+@import "sass/_fonts.scss";
+@import "sass/_mixins.scss";
+@import "sass/_breakpoints.scss";
+@import "sass/_variables.scss";
+
+
+
+@import './components/Input/Input.scss';
+@import './pages/LoginPage/LoginPage.scss';
+@import './components/Layout/Footer/Footer.scss';
