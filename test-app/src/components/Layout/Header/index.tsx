@@ -1,19 +1,27 @@
 import React from "react";
 import { useEffect, useState, useCallback} from "react";
 import { authActionCreators } from "../../../redux/actions/authActionCreators";
+import { blogsActionCreators } from "../../../redux/actions/blogsActionCreators";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   dataAuthSelector,
   isAuthAuthSelector,
 } from "../../../redux/selectors/authSelectors";
 import Button from "../../Button";
+import Input from "../../Input";
 import "./Header.scss";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { username, email } = useAppSelector(dataAuthSelector);
+  const { username} = useAppSelector(dataAuthSelector);
   const isAuth = useAppSelector(isAuthAuthSelector);
   const [userInitials, setUserInitials] = useState("");
+
+  const [searchForm, setSearchForm] = useState({searchText: ''})
+
+  const onSearchTextChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchForm (prevState => ({ ...prevState, [e.target.id]: e.target.value}))
+  }, []);
 
   const getUserInitials = (username: string): string => {
     if (username){
@@ -28,7 +36,6 @@ const Header = () => {
     } else {
       return '';
     }
-   
   };
 
   useEffect(() => {
@@ -42,10 +49,16 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="logo-img"></div>
-        <div className="header-search-wpapper"></div>
+        <div className="logo-img"></div>        
         {isAuth && (
           <>
+            <form className="header-search-form-wpapper" 
+                onSubmit = {(e) => {
+                  e.preventDefault();
+                  dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))
+                }}>
+              <Input value={searchForm.searchText} fieldName = 'searchText' onChange={onSearchTextChange}/>
+            </form>
             <div className="header-username-wrapper">
               <div className="userInitials">
                 <p>{userInitials}</p>
@@ -54,11 +67,12 @@ const Header = () => {
                 <p>{username}</p>
               </div>
             </div>
+            <div className="header-logout-wrapper">
+              <Button type="button" text="Log Out" onClick={onLogOut}/>
+            </div>
           </>
         )}
-        <div className="header-logout-wrapper">
-          <Button type="button" text="Log Out" onClick={onLogOut}/>
-        </div>
+        
       </header>
     </>
   );

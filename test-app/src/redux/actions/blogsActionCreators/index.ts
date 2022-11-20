@@ -1,7 +1,12 @@
 import { BlobOptions } from "buffer";
 import { IBlogPost } from "../../../types/blogsTypes";
 import { InferActionType } from "../../store";
-import { GET_BLOGS, BLOGS_LOADING, GET_BLOGS_SUCCESS, GET_BLOGS_FAILURE } from "../actions";
+import { GET_BLOGS,
+        BLOGS_LOADING,
+        GET_BLOGS_SUCCESS,
+        GET_BLOGS_FAILURE,
+        GET_BLOGS_WITH_FILTER,
+        SET_BLOGS_FILTER } from "../actions";
 
 export const blogsActionCreators = {
   // redux-saga
@@ -32,6 +37,21 @@ export const blogsActionCreators = {
         payload: error,
     }
   },
+
+  //with filter
+  getBlogsWithFilter: (filter: string) => {
+    return {
+        type: GET_BLOGS_WITH_FILTER,
+        payload: filter,
+    }
+  },
+
+  setBlogsFilter: (filter: string) => {
+    return {
+        type: SET_BLOGS_FILTER,
+        payload: filter,
+    }
+  }
 
 };
 

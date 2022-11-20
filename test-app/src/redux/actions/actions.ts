@@ -11,3 +11,6 @@ export const GET_BLOGS = 'GET_BLOGS' as const;
 export const BLOGS_LOADING = 'BLOGS_LOADING' as const;
 export const GET_BLOGS_SUCCESS = 'GET_BLOGS_SUCCESS' as const;
 export const GET_BLOGS_FAILURE = 'GET_BLOGS_FAILURE' as const;
+export const GET_BLOGS_WITH_FILTER = 'GET_BLOGS_WITH_FILTER' as const;
+export const SET_BLOGS_FILTER = 'SET_BLOGS_FILTER' as const;
+
