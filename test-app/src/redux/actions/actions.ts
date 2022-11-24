@@ -8,9 +8,12 @@ export const LOGOUT = 'LOGOUT' as const;
 
 //blogs
 export const GET_BLOGS = 'GET_BLOGS' as const;
+export const GET_PAGES_COUNT = 'GET_PAGES_COUNT' as const;
 export const BLOGS_LOADING = 'BLOGS_LOADING' as const;
 export const GET_BLOGS_SUCCESS = 'GET_BLOGS_SUCCESS' as const;
+export const GET_BLOGS_PAGES_COUNT_SUCCESS = 'GET_BLOGS_PAGES_COUNT_SUCCESS' as const;
 export const GET_BLOGS_FAILURE = 'GET_BLOGS_FAILURE' as const;
 export const GET_BLOGS_WITH_FILTER = 'GET_BLOGS_WITH_FILTER' as const;
 export const SET_BLOGS_FILTER = 'SET_BLOGS_FILTER' as const;
-
+export const GET_BLOGS_WITH_PAGE = 'GET_BLOGS_WITH_PAGE' as const;
+export const SET_PAGE = 'SET_PAGE' as const;

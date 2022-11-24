@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { registration } from "../../services/authServices";
