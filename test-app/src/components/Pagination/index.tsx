@@ -51,7 +51,7 @@ const Pagination = ({
         {paginationRange?.map((pageNumber) => {
           if (pageNumber === DOTS || pageNumber === DOTS) {
             return (
-              <li className='pagination-item dots' key={pageNumber}>
+              <li className='pagination-item dots' key={Math.random()}>
                 &#8230;
               </li>
             );

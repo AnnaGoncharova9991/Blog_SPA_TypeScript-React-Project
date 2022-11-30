@@ -15,5 +15,7 @@ export const GET_BLOGS_PAGES_COUNT_SUCCESS = 'GET_BLOGS_PAGES_COUNT_SUCCESS' as 
 export const GET_BLOGS_FAILURE = 'GET_BLOGS_FAILURE' as const;
 export const GET_BLOGS_WITH_FILTER = 'GET_BLOGS_WITH_FILTER' as const;
 export const SET_BLOGS_FILTER = 'SET_BLOGS_FILTER' as const;
+export const SET_BLOGS_SORT = 'SET_BLOGS_SORT' as const;
+export const GET_BLOGS_WITH_SORT = 'GET_BLOGS_WITH_SORT' as const;
 export const GET_BLOGS_WITH_PAGE = 'GET_BLOGS_WITH_PAGE' as const;
 export const SET_PAGE = 'SET_PAGE' as const;

@@ -10,15 +10,18 @@ import {
   GET_BLOGS_PAGES_COUNT_SUCCESS,
   GET_BLOGS_WITH_FILTER,
   SET_BLOGS_FILTER,
+  SET_BLOGS_SORT,
+  GET_BLOGS_WITH_SORT,
   GET_BLOGS_WITH_PAGE,
   SET_PAGE,
 } from '../actions';
 
 export const blogsActionCreators = {
   // redux-saga
-  getBlogs: () => {
+  getBlogs: ( sort : string) => {
     return {
       type: GET_BLOGS,
+      payload: { sort }
     };
   },
 
@@ -70,6 +73,21 @@ export const blogsActionCreators = {
       payload: filter,
     };
   },
+
+    setBlogsSort: (sort: string) => {
+        return { 
+            type: SET_BLOGS_SORT,
+            payload: sort
+        };
+    },
+
+    getBlogsWithSort: (sort: string) => {
+        return { 
+            type: GET_BLOGS_WITH_SORT,
+            payload: sort
+        };
+    },
+
 
   //with pagination
   getBlogsWithPage: (page: number | string) => {

@@ -1,0 +1,73 @@
+@import './../../global.scss';
+
+.select-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  user-select: none;
+
+  .select-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    padding: 10px;
+    background: $whiteColor;
+    color: $blackColor;
+    cursor: pointer;
+    &::before {
+      content: 'Sort:';
+      display: inline-block;
+      width: 2em;
+      height: 1em;
+      margin-right: 10px;
+      color: $secondaryLightColor;
+    }
+    .arrow-down {
+      position: relative;
+      content: '';
+      display: inline-block;
+      width: 0.5em;
+      height: 0.5em;
+      border-right: 0.12em solid $secondaryLightColor;
+      border-top: 0.12em solid $secondaryLightColor;
+      transform: rotate(134deg);
+      &:hover {
+        border-right: 0.12em solid $blackColor;
+        border-top: 0.12em solid $blackColor;
+      }
+    }
+    .arrow-up {
+      position: relative;
+      content: '';
+      display: inline-block;
+      width: 0.5em;
+      height: 0.5em;
+      border-right: 0.12em solid $blackColor;
+      border-top: 0.12em solid $blackColor;
+      transform: rotate(315deg) translate(-40%, 40%);
+    }
+  }
+  .select-dropdown-content {
+    width: 250px;
+    position: absolute;
+    top: 110%;
+    background: $whiteColor;
+    color: $blackColor;
+    z-index: 1;
+
+    .select-dropdown-content-list {
+      padding: 0;
+      margin: auto;
+
+      .select-dropdown-content-item {
+        border: 1px solid $secondaryExrtaLightColor;
+        padding: 10px;
+        margin: 0;
+        cursor: pointer;
+        &.active {
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}

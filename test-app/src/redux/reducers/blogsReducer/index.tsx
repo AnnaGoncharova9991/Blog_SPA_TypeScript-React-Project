@@ -4,6 +4,7 @@ import {
   GET_BLOGS_SUCCESS,
   GET_BLOGS_FAILURE,
   SET_BLOGS_FILTER,
+  SET_BLOGS_SORT,
   GET_BLOGS_PAGES_COUNT_SUCCESS,
   SET_PAGE,
 } from '../../actions/actions';
@@ -15,6 +16,7 @@ interface IInitialBlogsPage {
   filter: string;
   currentPage: number;
   pageCount: number;
+  sort: string;
 }
 
 const initialState: IInitialBlogsPage = {
@@ -24,6 +26,7 @@ const initialState: IInitialBlogsPage = {
   filter: '',
   currentPage: 1,
   pageCount: 0,
+  sort: '',
 };
 
 const blogsReducer = (state = initialState, action: any) => {
@@ -36,6 +39,8 @@ const blogsReducer = (state = initialState, action: any) => {
       return { ...state, error: action.payload };
     case SET_BLOGS_FILTER:
       return { ...state, filter: action.payload };
+    case SET_BLOGS_SORT:
+      return { ...state, sort: action.payload };
     case SET_PAGE:
       return { ...state, currentPage: action.payload };
     case GET_BLOGS_PAGES_COUNT_SUCCESS:
