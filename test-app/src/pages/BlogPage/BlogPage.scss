@@ -1,0 +1,126 @@
+@import '../../global.scss';
+
+.blog-post-conteiner {
+  width: 80%;
+  margin: auto;
+  padding: 20px 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $secondaryLightColor;
+    position: absolute;
+    top: 100%;
+  }
+
+  .home-btn-wrapper {
+    .home-btn {
+      border: none;
+      background-color: rgba(49, 47, 55, 0);
+      width: 50px;
+      line-height: 16px;
+      position: relative;
+      margin: 20px 5px 20px 0px;
+      color: $blackColor;
+      text-align: start;
+
+      &:hover {
+        color: $primaryColor;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 16px;
+        background-color: rgba(49, 47, 55, 0.5);
+        font-weight: 700;
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        transform: rotate(30deg);
+      }
+    }
+
+    .blog-post-id {
+      margin-left: 5px;
+      line-height: 14px;
+      font-size: 14px;
+      color: rgba(49, 47, 55, 0.5);
+      font-weight: 500;
+    }
+  }
+  .blog-post-title {
+    font-size: 34px;
+    color: rgba(49, 48, 55);
+    text-shadow: 0px 0px 1px black;
+    margin-bottom: 20px;
+  }
+  .blog-post-img-wrapper {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .blog-post-img {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .blog-post-text-wrapper {
+    display: flex;
+    margin: auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+
+    article {
+      text-align: start;
+      font-size: 18px;
+    }
+  }
+  .social-links-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 90%;
+    margin: auto;
+
+    .social-links-item {
+      min-width: 50px;
+      min-height: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-content: center;
+      border-radius: 15%;
+      background-color: $secondaryLightColor ;
+      margin-right: 5px;
+
+      a {
+        display: flex;
+        align-items: center;
+        display: flex;
+        font-size: 34px;
+        text-align: center;
+
+        .facebook {
+          height: 16px;
+        }
+        .twitter {
+          max-width: 11px;
+          height: 20px;
+        }
+        .dots {
+          line-height: 20px;
+          font-size: 34px;
+          color: $blackColor;
+        }
+      }
+    }
+  }
+}

@@ -3,10 +3,13 @@ import { IBlogPost } from '../../../types/blogsTypes';
 import { InferActionType } from '../../store';
 import {
   GET_BLOGS,
+  GET_ONE_BLOG,
   GET_PAGES_COUNT,
   BLOGS_LOADING,
   GET_BLOGS_SUCCESS,
+  GET_BLOG_SUCCESS,
   GET_BLOGS_FAILURE,
+  GET_BLOG_FAILURE,
   GET_BLOGS_PAGES_COUNT_SUCCESS,
   GET_BLOGS_WITH_FILTER,
   SET_BLOGS_FILTER,
@@ -24,6 +27,14 @@ export const blogsActionCreators = {
       payload: { sort }
     };
   },
+
+  getOneBlog: ( id : string) => {
+    return {
+      type: GET_ONE_BLOG,
+      payload: {id}
+    };
+  },
+
 
   setPagesCount: () => {
     return {
@@ -46,12 +57,27 @@ export const blogsActionCreators = {
     };
   },
 
+  getBlogSuccess: (blog: IBlogPost) => {
+    return {
+      type: GET_BLOG_SUCCESS,
+      payload: blog,
+    };
+  },
+
   getBlogsFailure: (error: string) => {
     return {
       type: GET_BLOGS_FAILURE,
       payload: error,
     };
   },
+
+  getBlogFailure: (error: string) => {
+    return {
+      type: GET_BLOG_FAILURE,
+      payload: error,
+    };
+  },
+
   getBlogsPagesCountSuccess: (count: number) => {
     return {
       type: GET_BLOGS_PAGES_COUNT_SUCCESS,

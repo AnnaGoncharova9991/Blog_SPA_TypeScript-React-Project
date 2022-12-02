@@ -11,6 +11,7 @@ import Select from '../../components/Select';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import './BlocksPage.scss';
+import Switcher from '../../components/Switcher';
 
 const OPTIONS = [
   { label: 'Clean sort', value: '' },
@@ -42,7 +43,8 @@ const BlogsPage = () => {
     <>
       {pagesCount && (
         <>
-          <h2>Blogs</h2>
+          <h2 className='blogs-title'>Blogs</h2>
+          <Switcher firstButtonText='Blogs' secondButtonText='Articles'/>
           <Select
             options={OPTIONS} onSortChange={(sortItem) => onSortChange(sortItem)}
           />

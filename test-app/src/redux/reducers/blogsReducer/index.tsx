@@ -2,7 +2,9 @@ import { IBlogPost } from '../../../types/blogsTypes';
 import {
   BLOGS_LOADING,
   GET_BLOGS_SUCCESS,
+  GET_BLOG_SUCCESS,
   GET_BLOGS_FAILURE,
+  GET_BLOG_FAILURE,
   SET_BLOGS_FILTER,
   SET_BLOGS_SORT,
   GET_BLOGS_PAGES_COUNT_SUCCESS,
@@ -35,7 +37,11 @@ const blogsReducer = (state = initialState, action: any) => {
       return { ...state, isLoading: action.payload };
     case GET_BLOGS_SUCCESS:
       return { ...state, blogs: [...action.payload], error: null };
+    case GET_BLOG_SUCCESS:
+      return { ...state, blogs: [{...action.payload}], error: null };
     case GET_BLOGS_FAILURE:
+      return { ...state, error: action.payload };
+    case GET_BLOG_FAILURE:
       return { ...state, error: action.payload };
     case SET_BLOGS_FILTER:
       return { ...state, filter: action.payload };
