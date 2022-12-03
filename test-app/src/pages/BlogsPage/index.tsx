@@ -11,12 +11,17 @@ import Select from '../../components/Select';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import './BlocksPage.scss';
-import Switcher from '../../components/Switcher';
+import Tab from '../../components/Tab';
 
 const OPTIONS = [
   { label: 'Clean sort', value: '' },
   { label: 'Title (A-Z)', value: 'title' },
   { label: 'Description (A-Z)', value: 'summary' },
+];
+
+const TAB_BUTTONS = [
+  { btnName: 'Blogs', btnPathTo: '/blogs' },
+  { btnName: 'Articles', btnPathTo: '/articles' },
 ];
 
 const BlogsPage = () => {
@@ -44,7 +49,7 @@ const BlogsPage = () => {
       {pagesCount && (
         <>
           <h2 className='blogs-title'>Blogs</h2>
-          <Switcher firstButtonText='Blogs' secondButtonText='Articles'/>
+          <Tab btnsDescription={TAB_BUTTONS} activeBtn = {'Blogs'}/>
           <Select
             options={OPTIONS} onSortChange={(sortItem) => onSortChange(sortItem)}
           />
@@ -52,7 +57,7 @@ const BlogsPage = () => {
           <Pagination
             currentPage={page}
             pageCount={pagesCount}
-            blogsPerPageLimit={10}
+            blogsPerPageLimit={12}
             className='pagination-bar'
             siblingCount={1}
             onPageChange={(page) => onPageChange(page)}
