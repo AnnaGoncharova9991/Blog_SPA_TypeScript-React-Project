@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import "./LoginPage.scss";
@@ -32,9 +32,7 @@ const LoginPage = () => {
         ...prevState,
         [e.target.id]: e.target.value,
       }));
-    },
-    []
-  );
+    },[]);
 
   const onLoginFormSubmit = useCallback(
     () => 
@@ -47,16 +45,22 @@ const LoginPage = () => {
     [dispatch, LoginForm.email, LoginForm.password]
   );
 
+  const isButtonDisabled = useMemo (() => {
+    const formValue = Object.values(LoginForm);
+    return !(formValue.filter(item => !!item).length === formValue.length)
+  }, [LoginForm]);
+
+  
   return (
     <>
       {!isLoading ? (
         <>
           <div className="container">
             <div className="wrapper-form">
-              {errorMessage && <p>{errorMessage}</p>}
+              {errorMessage && <p>{errorMessage}</p>}                          
               <Input onChange={onLoginFormChange} fieldName="email" value={LoginForm.email} />
-              <Input onChange={onLoginFormChange} fieldName="password" value={LoginForm.password} />
-              <Button type="button" text="Sign in" onClick={onLoginFormSubmit} />
+              <Input onChange={onLoginFormChange} fieldName="password" value={LoginForm.password}/>
+              <Button disabled={isButtonDisabled} type="button" text="Sign in" onClick={onLoginFormSubmit} />
               <div className="wrapper-sing-up">
                 <span className="sing-up-text">Don't have an account?</span>
                 <Link to ='/registration' >

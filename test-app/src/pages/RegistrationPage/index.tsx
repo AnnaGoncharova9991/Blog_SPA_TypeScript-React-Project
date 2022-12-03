@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { registration } from "../../services/authServices";
@@ -46,6 +46,11 @@ const RegistrationPage = () => {
       }
     }, [RegistrationForm]);
 
+    const isButtonDisabled = useMemo (() => {
+      const formValue = Object.values(RegistrationForm);
+      return !(formValue.filter(item => !!item).length === formValue.length)
+    }, [RegistrationForm]);
+
   return (
     <>
       {
@@ -66,7 +71,12 @@ const RegistrationPage = () => {
                       <Input onChange={onRegistrationFormChange} fieldName="username" value={RegistrationForm.username} />
                       <Input onChange={onRegistrationFormChange} fieldName="email" value={RegistrationForm.email} />
                       <Input onChange={onRegistrationFormChange} fieldName="password" value={RegistrationForm.password} />
-                      <Button type='button' text='Sign up' onClick={onRegistrationFormSubmit} />
+                      <div>
+                        <Button disabled={isButtonDisabled} type='button' text='Sign up' onClick={onRegistrationFormSubmit} />
+                        <Link to = '/login'>
+                          <Button text = 'Go to the login page'/>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </>
