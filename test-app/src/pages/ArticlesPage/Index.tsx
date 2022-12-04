@@ -14,8 +14,6 @@ import Tab from '../../components/Tab';
 import './ArticlesPage.scss';
 import ArticlesList from '../../components/AtriclesList';
 
-
-
 const OPTIONS = [
     { label: 'Clean sort', value: '' },
     { label: 'Title (A-Z)', value: 'title' },

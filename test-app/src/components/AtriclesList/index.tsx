@@ -15,7 +15,7 @@ const ArticlesList = ({ articles }: IArticlesList) => {
                 articles.map( item => {
                     return (
                         <li key= {item.id}>
-                            <Link to={`/v3/articles/${item.id}`}>
+                            <Link to={`/articles/${item.id}`}>
                             <ArticleCard title = {item.title} imageUrl = {item.imageUrl} publishedAt = {item.publishedAt} />
                             </Link>
                             

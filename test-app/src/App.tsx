@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import BlogsPage from "./pages/BlogsPage";
 import BlogPage from "./pages/BlogPage";
 import ArticlesPage from "./pages/ArticlesPage/Index";
+import ArticlePage from "./pages/ArticlePage";
 import NotFoundPage from "./pages/NotFounPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import Layout from "./components/Layout";
@@ -22,8 +23,9 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route element={<PersistLogin />} >
           <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blog/:id" element={<BlogPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/blog/:id" element={<BlogPage />} />          
+          <Route path="/articles/:id" element={<ArticlePage />} />                   
         </Route>
       </Route>
     </Routes>
