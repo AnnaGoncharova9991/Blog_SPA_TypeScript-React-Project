@@ -16,7 +16,8 @@ import {
   SET_BLOGS_SORT,
   GET_BLOGS_WITH_SORT,
   GET_BLOGS_WITH_PAGE,
-  SET_PAGE,
+  SET_BLOGS_PAGE,
+  SET_BLOGS_ISACTIVE_PAGE,
 } from '../actions';
 
 export const blogsActionCreators = {
@@ -85,6 +86,13 @@ export const blogsActionCreators = {
     };
   },
 
+  setBlogsPageIsActive: (isActive: boolean) => {
+    return {
+      type: SET_BLOGS_ISACTIVE_PAGE,
+      payload: isActive,
+    };
+  },
+
   //with filter
   getBlogsWithFilter: (filter: string) => {
     return {
@@ -125,10 +133,10 @@ export const blogsActionCreators = {
 
   setBlogsPage: (page: number | string) => {
     return {
-      type: SET_PAGE,
+      type: SET_BLOGS_PAGE,
       payload: page,
     };
   },
 };
 
-export type AuthActionType = InferActionType<typeof blogsActionCreators>;
+export type BlogsActionType = InferActionType<typeof blogsActionCreators>;

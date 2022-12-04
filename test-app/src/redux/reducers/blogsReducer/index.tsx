@@ -8,7 +8,8 @@ import {
   SET_BLOGS_FILTER,
   SET_BLOGS_SORT,
   GET_BLOGS_PAGES_COUNT_SUCCESS,
-  SET_PAGE,
+  SET_BLOGS_PAGE,
+  SET_BLOGS_ISACTIVE_PAGE,
 } from '../../actions/actions';
 
 interface IInitialBlogsPage {
@@ -19,6 +20,7 @@ interface IInitialBlogsPage {
   currentPage: number;
   pageCount: number;
   sort: string;
+  isActivePage: boolean;
 }
 
 const initialState: IInitialBlogsPage = {
@@ -29,6 +31,7 @@ const initialState: IInitialBlogsPage = {
   currentPage: 1,
   pageCount: 0,
   sort: '',
+  isActivePage: true,
 };
 
 const blogsReducer = (state = initialState, action: any) => {
@@ -47,10 +50,12 @@ const blogsReducer = (state = initialState, action: any) => {
       return { ...state, filter: action.payload };
     case SET_BLOGS_SORT:
       return { ...state, sort: action.payload };
-    case SET_PAGE:
+    case SET_BLOGS_PAGE:
       return { ...state, currentPage: action.payload };
     case GET_BLOGS_PAGES_COUNT_SUCCESS:
       return { ...state, pageCount: action.payload };
+    case SET_BLOGS_ISACTIVE_PAGE:
+      return { ...state, isActivePage: action.payload, currentPage: 1, filter: '', sort: ''};
   }
   return state;
 };

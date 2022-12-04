@@ -14,7 +14,7 @@ interface ITabProps {
 }
 
 const Tab = ({ btnsDescription, activeBtn }: ITabProps) => {
-  
+
   return (
     <>
       <div className='tab-wrapper'>

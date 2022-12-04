@@ -12,6 +12,7 @@ import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import './BlocksPage.scss';
 import Tab from '../../components/Tab';
+import { articlesActionCreators } from '../../redux/actions/articlesActionCreators';
 
 const OPTIONS = [
   { label: 'Clean sort', value: '' },
@@ -42,6 +43,8 @@ const BlogsPage = () => {
   useEffect(() => {
     dispatch(blogsActionCreators.getBlogs(sortItem));
     dispatch(blogsActionCreators.setPagesCount());
+    dispatch(articlesActionCreators.setArticlesPageIsActive(false));
+    dispatch(blogsActionCreators.setBlogsPageIsActive(true));
   }, [dispatch]);
 
   return (

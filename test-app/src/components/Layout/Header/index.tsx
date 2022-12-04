@@ -2,11 +2,14 @@ import React from "react";
 import { useEffect, useState, useCallback} from "react";
 import { authActionCreators } from "../../../redux/actions/authActionCreators";
 import { blogsActionCreators } from "../../../redux/actions/blogsActionCreators";
+import { articlesActionCreators } from "../../../redux/actions/articlesActionCreators";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   dataAuthSelector,
   isAuthAuthSelector,
 } from "../../../redux/selectors/authSelectors";
+import { isActivePageArticlesSelector } from "../../../redux/selectors/articlesSelectors";
+import { isActivePageBlogsSelector } from "../../../redux/selectors/blogsSelectors";
 import Button from "../../Button";
 import Input from "../../Input";
 import "./Header.scss";
@@ -15,6 +18,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const { username} = useAppSelector(dataAuthSelector);
   const isAuth = useAppSelector(isAuthAuthSelector);
+  const IsArticlesPageActive = useAppSelector(isActivePageArticlesSelector);
+  const IsBlogsPageActive = useAppSelector(isActivePageBlogsSelector);
   const [userInitials, setUserInitials] = useState("");
 
   const [searchForm, setSearchForm] = useState({searchText: ''})
@@ -40,7 +45,8 @@ const Header = () => {
 
   useEffect(() => {
     setUserInitials(getUserInitials(username));
-  }, [username]);
+    setSearchForm({searchText: ''});
+  }, [username, IsBlogsPageActive, IsArticlesPageActive]);
 
   const onLogOut = useCallback(() => {
    dispatch(authActionCreators.logOut());
@@ -55,7 +61,8 @@ const Header = () => {
             <form className="header-search-form-wpapper" 
                 onSubmit = {(e) => {
                   e.preventDefault();
-                  dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))
+                  IsBlogsPageActive && (<>{dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))}  {dispatch(articlesActionCreators.setArticlesFilter(''))}</>)
+                  IsArticlesPageActive && (<>{dispatch(articlesActionCreators.getArticlesWithFilter(searchForm.searchText))} {dispatch(blogsActionCreators.setBlogsFilter(''))}</>)
                 }}>
               <Input value={searchForm.searchText} fieldName = 'searchText' onChange={onSearchTextChange}/>
             </form>

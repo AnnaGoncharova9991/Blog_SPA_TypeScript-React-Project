@@ -19,11 +19,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/activate/:uid/:token" element={<ActivationPage />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route element={<PersistLogin />} >
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/blog/:id" element={<BlogPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/blog/:id" element={<BlogPage />} />          
         </Route>
       </Route>
     </Routes>
