@@ -1,20 +1,19 @@
-@import "../../global.scss";
+@import '../../global.scss';
 
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+  padding: 72px 0;
+
+  li {
+    width: 300px;
+    margin: 0 10px 10px 10px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 -15px;
-    padding: 72px 0;
-  
-    li {
-      width: 300px;
-      margin: 0 10px 10px 10px;
-      display: flex;
-      align-content: stretch;
-      li:nth-last-child(n) {
-        margin-bottom: 0px;
-      }
+    align-content: stretch;
+    li:nth-last-child(n) {
+      margin-bottom: 0px;
     }
   }
-  
+}

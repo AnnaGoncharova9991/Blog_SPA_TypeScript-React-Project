@@ -24,7 +24,7 @@ function* fetchArticles() {
     const page: number = yield select(currentPageArticlesSelector);
     const sort: string = yield select(sortArticlesSelector);
 
-    const response: AxiosResponse<IArticlePost[]> = yield call(getArticles, {filter, page, sort});
+    const response: AxiosResponse<IArticlePost[]> = yield call(getArticles, { filter, page, sort });
     if (response.data && response.status === 200) {
       yield put(articlesActionCreators.getArticlesSuccess(response.data));
     }
@@ -33,40 +33,40 @@ function* fetchArticles() {
   } finally {
     yield put(articlesActionCreators.setArticlesLoading(false));
   }
-};
-function* fetchOneArticle({payload}: ReturnType<typeof articlesActionCreators.getOneArticle>) {
+}
+function* fetchOneArticle({ payload }: ReturnType<typeof articlesActionCreators.getOneArticle>) {
   try {
     yield put(articlesActionCreators.setArticlesLoading(true));
 
-    const response: AxiosResponse<IArticlePost> = yield call(getOneArticle, payload );
+    const response: AxiosResponse<IArticlePost> = yield call(getOneArticle, payload);
     if (response.data && response.status === 200) {
       yield put(articlesActionCreators.getArticleSuccess(response.data));
     }
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     yield put(articlesActionCreators.getArticleFailure(e?.response?.data?.detail));
   } finally {
     yield put(articlesActionCreators.setArticlesLoading(false));
   }
-};
+}
 
 function* fetchArticlesWithFilter({ payload }: ReturnType<typeof articlesActionCreators.getArticlesWithFilter>) {
   yield put(articlesActionCreators.setArticlesFilter(payload));
 
   yield fetchArticles();
-};
+}
 
 function* fetchArticlesWithPage({ payload }: ReturnType<typeof articlesActionCreators.getArticlesWithPage>) {
   yield put(articlesActionCreators.setArticlesPage(payload));
 
   yield fetchArticles();
-};
+}
 
 function* fetchArticlesWithSort({ payload }: ReturnType<typeof articlesActionCreators.getArticlesWithSort>) {
   yield put(articlesActionCreators.setArticlesSort(payload));
 
   yield fetchArticles();
-};
+}
 
 function* fetchPagesCount() {
   try {
@@ -81,7 +81,7 @@ function* fetchPagesCount() {
   } finally {
     yield put(articlesActionCreators.setArticlesLoading(false));
   }
-};
+}
 
 export function* watchArticlesSaga() {
   yield all([
@@ -92,4 +92,4 @@ export function* watchArticlesSaga() {
     takeLatest(GET_ARTICLES_WITH_PAGE, fetchArticlesWithPage),
     takeLatest(GET_ARTICLES_WITH_SORT, fetchArticlesWithSort),
   ]);
-};
+}

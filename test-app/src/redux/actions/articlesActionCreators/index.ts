@@ -28,18 +28,18 @@ export const articlesActionCreators = {
     };
   },
 
-      getOneArticle: ( id : string) => {
-        return {
-          type: GET_ONE_ARTICLE,
-          payload: {id}
-        };
-      },
+  getOneArticle: (id: string) => {
+    return {
+      type: GET_ONE_ARTICLE,
+      payload: { id },
+    };
+  },
 
-      setPagesCount: () => {
-        return {
-          type: GET_PAGES_COUNT,
-        };
-      },
+  setPagesCount: () => {
+    return {
+      type: GET_PAGES_COUNT,
+    };
+  },
 
   // reducers
   setArticlesLoading: (isLoading: boolean) => {
@@ -56,85 +56,84 @@ export const articlesActionCreators = {
     };
   },
 
-      getArticleSuccess: (article: IArticlePost) => {
-        return {
-          type: GET_ARTICLE_SUCCESS,
-          payload: article,
-        };
-      },
+  getArticleSuccess: (article: IArticlePost) => {
+    return {
+      type: GET_ARTICLE_SUCCESS,
+      payload: article,
+    };
+  },
 
   getArticlesFailure: (error: string) => {
-        return {
-          type: GET_ARTICLES_FAILURE,
-          payload: error,
-        };
-      },
+    return {
+      type: GET_ARTICLES_FAILURE,
+      payload: error,
+    };
+  },
 
-      getArticleFailure: (error: string) => {
-        return {
-          type: GET_ARTICLE_FAILURE,
-          payload: error,
-        };
-      },
+  getArticleFailure: (error: string) => {
+    return {
+      type: GET_ARTICLE_FAILURE,
+      payload: error,
+    };
+  },
 
-      getArticlesPagesCountSuccess: (count: number) => {
-        return {
-          type: GET_ARTICLES_PAGES_COUNT_SUCCESS,
-          payload: count,
-        };
-      },
-      
-      setArticlesPageIsActive: (isActive: boolean) => {
-        return {
-          type: SET_ARTICLE_ISACTIVE_PAGE,
-          payload: isActive,
-        };
-      },
+  getArticlesPagesCountSuccess: (count: number) => {
+    return {
+      type: GET_ARTICLES_PAGES_COUNT_SUCCESS,
+      payload: count,
+    };
+  },
 
+  setArticlesPageIsActive: (isActive: boolean) => {
+    return {
+      type: SET_ARTICLE_ISACTIVE_PAGE,
+      payload: isActive,
+    };
+  },
 
-      //with filter
-      getArticlesWithFilter: (filter: string) => {
-        return {
-          type: GET_ARTICLES_WITH_FILTER,
-          payload: filter,
-        };
-      },
+  //with filter
+  getArticlesWithFilter: (filter: string) => {
+    return {
+      type: GET_ARTICLES_WITH_FILTER,
+      payload: filter,
+    };
+  },
 
-      setArticlesFilter: (filter: string) => {
-        return {
-          type: SET_ARTICLES_FILTER,
-          payload: filter,
-        };
-      },
+  setArticlesFilter: (filter: string) => {
+    return {
+      type: SET_ARTICLES_FILTER,
+      payload: filter,
+    };
+  },
 
-        setArticlesSort: (sort: string) => {
-            return {
-                type: SET_ARTICLES_SORT,
-                payload: sort
-            };
-        },
+  setArticlesSort: (sort: string) => {
+    return {
+      type: SET_ARTICLES_SORT,
+      payload: sort,
+    };
+  },
 
   getArticlesWithSort: (sort: string) => {
-            return {
-                type: GET_ARTICLES_WITH_SORT,
-                payload: sort
-            };
-        },
+    return {
+      type: GET_ARTICLES_WITH_SORT,
+      payload: sort,
+    };
+  },
 
-      //with pagination
-      getArticlesWithPage: (page: number | string) => {
-        return {
-          type: GET_ARTICLES_WITH_PAGE,
-          payload: page,
-        };
-      },
+  //with pagination
+  getArticlesWithPage: (page: number | string) => {
+    return {
+      type: GET_ARTICLES_WITH_PAGE,
+      payload: page,
+    };
+  },
 
-      setArticlesPage: (page: number | string) => {
-        return {
-          type: SET_ARTICLES_PAGE,
-          payload: page,
-        };
-      },
+  setArticlesPage: (page: number | string) => {
+    return {
+      type: SET_ARTICLES_PAGE,
+      payload: page,
+    };
+  },
 };
 
 export type ArticlesActionType = InferActionType<typeof articlesActionCreators>;

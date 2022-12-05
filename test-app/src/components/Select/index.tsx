@@ -52,4 +52,4 @@ const Select = ({ options, onSortChange }: ISelectProps) => {
     </div>
   );
 };
-export default Select;
+export default React.memo(Select);

@@ -1,13 +1,18 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/Input";
-import "./LoginPage.scss";
-import Button from "../../components/Button";
-import { authActionCreators } from "../../redux/actions/authActionCreators";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { errorAuthSelector, isLoadingAuthSelector, dataAuthSelector, isAuthAuthSelector } from "../../redux/selectors/authSelectors";
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Input from '../../components/Input';
+import './LoginPage.scss';
+import Button from '../../components/Button';
+import { authActionCreators } from '../../redux/actions/authActionCreators';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  errorAuthSelector,
+  isLoadingAuthSelector,
+  dataAuthSelector,
+  isAuthAuthSelector,
+} from '../../redux/selectors/authSelectors';
 
-const initialLoginForm = { email: "", password: "" };
+const initialLoginForm = { email: '', password: '' };
 
 const LoginPage = () => {
   const [LoginForm, setLoginForm] = useState(initialLoginForm);
@@ -21,9 +26,9 @@ const LoginPage = () => {
   const isAuth = useAppSelector(isAuthAuthSelector);
 
   useEffect(() => {
-    if (isAuth){
-      navigate('/blogs', {replace: true});
-    }      
+    if (isAuth) {
+      navigate('/blogs', { replace: true });
+    }
   }, [isAuth, navigate]);
 
   const onLoginFormChange = useCallback(
@@ -32,10 +37,12 @@ const LoginPage = () => {
         ...prevState,
         [e.target.id]: e.target.value,
       }));
-    },[]);
+    },
+    []
+  );
 
   const onLoginFormSubmit = useCallback(
-    () => 
+    () =>
       dispatch(
         authActionCreators.getLogin({
           email: LoginForm.email,
@@ -45,33 +52,46 @@ const LoginPage = () => {
     [dispatch, LoginForm.email, LoginForm.password]
   );
 
-  const isButtonDisabled = useMemo (() => {
+  const isButtonDisabled = useMemo(() => {
     const formValue = Object.values(LoginForm);
-    return !(formValue.filter(item => !!item).length === formValue.length)
+    return !(formValue.filter((item) => !!item).length === formValue.length);
   }, [LoginForm]);
 
-  
   return (
     <>
       {!isLoading ? (
         <>
-          <div className="container">
-            <div className="wrapper-form">
-              {errorMessage && <p>{errorMessage}</p>}                          
-              <Input onChange={onLoginFormChange} fieldName="email" value={LoginForm.email} />
-              <Input onChange={onLoginFormChange} fieldName="password" value={LoginForm.password}/>
-              <Button disabled={isButtonDisabled} type="button" text="Sign in" onClick={onLoginFormSubmit} />
-              <div className="wrapper-sing-up">
-                <span className="sing-up-text">Don't have an account?</span>
-                <Link to ='/registration' >
-                  <span className="sing-up-link">Sing Up</span>
-                </Link>                
+          <div className='container'>
+            <div className='wrapper-form'>
+              {errorMessage && <p>{errorMessage}</p>}
+              <Input
+                onChange={onLoginFormChange}
+                fieldName='email'
+                value={LoginForm.email}
+              />
+              <Input
+                onChange={onLoginFormChange}
+                fieldName='password'
+                value={LoginForm.password}
+              />
+              <Button
+                disabled={isButtonDisabled}
+                type='button'
+                text='Sign in'
+                onClick={onLoginFormSubmit}
+              />
+              <div className='wrapper-sing-up'>
+                <span className='sing-up-text'>Don't have an account?</span>
+                <Link to='/registration'>
+                  <span className='sing-up-link'>Sing Up</span>
+                </Link>
               </div>
             </div>
           </div>
         </>
-      ) : ( <div>Loading...</div>)
-      }
+      ) : (
+        <div>Loading...</div>
+      )}
     </>
   );
 };

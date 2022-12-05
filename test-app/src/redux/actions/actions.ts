@@ -39,5 +39,3 @@ export const SET_ARTICLES_PAGE = 'SET_ARTICLES_PAGE' as const;
 export const GET_ARTICLES_WITH_SORT = 'GET_ARTICLES_WITH_SORT' as const;
 export const SET_ARTICLES_SORT = 'SET_ARTICLES_SORT' as const;
 export const SET_ARTICLE_ISACTIVE_PAGE = 'SET_ARTICLE_ISACTIVE_PAGE' as const;
-
-

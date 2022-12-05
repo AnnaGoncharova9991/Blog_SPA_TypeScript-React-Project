@@ -14,13 +14,17 @@ interface ITabProps {
 }
 
 const Tab = ({ btnsDescription, activeBtn }: ITabProps) => {
-
   return (
     <>
       <div className='tab-wrapper'>
         {btnsDescription.map((btn) => (
           <Link to={btn.btnPathTo}>
-            <Button className={activeBtn === btn.btnName ? 'tab-button active': 'tab-button'} text={btn.btnName} />
+            <Button
+              className={
+                activeBtn === btn.btnName ? 'tab-button active' : 'tab-button'
+              }
+              text={btn.btnName}
+            />
           </Link>
         ))}
       </div>

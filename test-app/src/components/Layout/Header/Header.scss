@@ -1,57 +1,54 @@
 @import '../../../global.scss';
 
 header {
-    background-color: $whiteColor;
+  background-color: $whiteColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo-img {
+    width: 110px;
+    height: 50px;
+    background-image: url('../../../img/blogologo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .header-search-form-wpapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row;
+  }
 
-    .logo-img{
-        width: 110px;
-        height: 50px;
-        background-image: url('../../../img/blogologo.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
+  .header-username-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-items: end;
+
+    .userInitials {
+      width: 34px;
+      height: 34px;
+      padding: 5px;
+      margin-right: 10px;
+      text-align: center;
+      border: solid 1px $primaryColor;
+      border-radius: 10%;
+      background-color: $primaryColor;
+
+      & p {
+        font-size: 16px;
+        font-weight: 600;
+        color: $whiteColor;
+      }
     }
-
-    .header-search-form-wpapper{
-        display: flex;
-        flex-direction: row;
+    .username-text {
+      text-align: center;
+      & p {
+        line-height: 34px;
+        font-weight: 600;
+        font-size: 16px;
+        color: $blackColor;
+      }
     }
-
-    .header-username-wrapper{
-        display: flex;
-        flex-direction: row;
-        justify-items: end;
-
-        .userInitials{
-            width: 34px;
-            height: 34px;
-            padding: 5px;
-            margin-right: 10px;
-            text-align: center;
-            border: solid 1px $primaryColor;
-            border-radius: 10%;
-            background-color: $primaryColor;           
-            
-            & p {
-                font-size: 16px;
-                font-weight: 600;
-                color: $whiteColor;
-            }
-        }
-        .username-text{
-            text-align: center;
-            & p {
-                line-height: 34px;
-                font-weight: 600;
-                font-size: 16px;
-                color: $blackColor;
-            }           
-        }
-
-    }
-
+  }
 }
-

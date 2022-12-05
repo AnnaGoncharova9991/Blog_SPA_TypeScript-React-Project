@@ -11,11 +11,7 @@ import { blogsActionCreators } from '../../actions/blogsActionCreators';
 import { AxiosResponse } from 'axios';
 import { getBlogs, getOneBlog, getPagesCount } from '../../../services/blogsServices';
 import { IBlogPost, IBlogsResponsePagesCount } from '../../../types/blogsTypes';
-import {
-  currentPageBlogsSelector,
-  filterBlogsSelector,
-  sortBlogsSelector,
-} from '../../selectors/blogsSelectors';
+import { currentPageBlogsSelector, filterBlogsSelector, sortBlogsSelector } from '../../selectors/blogsSelectors';
 
 function* fetchBlogs() {
   try {
@@ -24,7 +20,7 @@ function* fetchBlogs() {
     const page: number = yield select(currentPageBlogsSelector);
     const sort: string = yield select(sortBlogsSelector);
 
-    const response: AxiosResponse<IBlogPost[]> = yield call(getBlogs, {filter, page, sort});
+    const response: AxiosResponse<IBlogPost[]> = yield call(getBlogs, { filter, page, sort });
     if (response.data && response.status === 200) {
       yield put(blogsActionCreators.getBlogsSuccess(response.data));
     }
@@ -33,40 +29,40 @@ function* fetchBlogs() {
   } finally {
     yield put(blogsActionCreators.setBlogsLoading(false));
   }
-};
-function* fetchOneBlog({payload}: ReturnType<typeof blogsActionCreators.getOneBlog>) {
+}
+function* fetchOneBlog({ payload }: ReturnType<typeof blogsActionCreators.getOneBlog>) {
   try {
     yield put(blogsActionCreators.setBlogsLoading(true));
 
-    const response: AxiosResponse<IBlogPost> = yield call(getOneBlog, payload );
+    const response: AxiosResponse<IBlogPost> = yield call(getOneBlog, payload);
     if (response.data && response.status === 200) {
       yield put(blogsActionCreators.getBlogSuccess(response.data));
     }
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     yield put(blogsActionCreators.getBlogsFailure(e?.response?.data?.detail));
   } finally {
     yield put(blogsActionCreators.setBlogsLoading(false));
   }
-};
+}
 
 function* fetchBlogsWithFilter({ payload }: ReturnType<typeof blogsActionCreators.getBlogsWithFilter>) {
   yield put(blogsActionCreators.setBlogsFilter(payload));
 
   yield fetchBlogs();
-};
+}
 
 function* fetchBlogsWithPage({ payload }: ReturnType<typeof blogsActionCreators.getBlogsWithPage>) {
   yield put(blogsActionCreators.setBlogsPage(payload));
 
   yield fetchBlogs();
-};
+}
 
 function* fetchBlogsWithSort({ payload }: ReturnType<typeof blogsActionCreators.getBlogsWithSort>) {
   yield put(blogsActionCreators.setBlogsSort(payload));
 
   yield fetchBlogs();
-};
+}
 
 function* fetchPagesCount() {
   try {
@@ -81,7 +77,7 @@ function* fetchPagesCount() {
   } finally {
     yield put(blogsActionCreators.setBlogsLoading(false));
   }
-};
+}
 
 export function* watchBlogsSaga() {
   yield all([
@@ -92,4 +88,4 @@ export function* watchBlogsSaga() {
     takeLatest(GET_BLOGS_WITH_PAGE, fetchBlogsWithPage),
     takeLatest(GET_BLOGS_WITH_SORT, fetchBlogsWithSort),
   ]);
-};
+}

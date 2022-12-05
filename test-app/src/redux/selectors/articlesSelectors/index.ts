@@ -1,4 +1,4 @@
-import { RootState } from "../../store";
+import { RootState } from '../../store';
 
 export const articlesPostsArticlesSelector = (state: RootState) => state.articles.articles;
 export const filterArticlesSelector = (state: RootState) => state.articles.filter;

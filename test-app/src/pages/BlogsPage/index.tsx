@@ -52,9 +52,10 @@ const BlogsPage = () => {
       {pagesCount && (
         <>
           <h2 className='blogs-title'>Blogs</h2>
-          <Tab btnsDescription={TAB_BUTTONS} activeBtn = {'Blogs'}/>
+          <Tab btnsDescription={TAB_BUTTONS} activeBtn={'Blogs'} />
           <Select
-            options={OPTIONS} onSortChange={(sortItem) => onSortChange(sortItem)}
+            options={OPTIONS}
+            onSortChange={(sortItem) => onSortChange(sortItem)}
           />
           <BlogList blogs={blogs} />
           <Pagination

@@ -9,60 +9,55 @@ footer {
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
-  
+
       .footer-text {
         font-size: 16px;
         line-height: 68px;
       }
-  
+
       .switcher-btn-wrapper {
-        
-  
         .switcher-tex {
           cursor: pointer;
           font-size: 16px;
           line-height: 20px;
           position: relative;
-  
+
           &::after {
-            content: "";
+            content: '';
             width: 32px;
             height: 20px;
-  
+
             background: rgba(49, 48, 55, 0.3);
             border: 1px solid rgba(49, 48, 55, 0.3);
             border-radius: 10px;
-  
+
             position: absolute;
             top: -1px;
-            right: -40px;         
+            right: -40px;
           }
-  
+
           &::before {
-              content: "";
-              width: 18px;
-              height: 18px;
-  
-              background-color: rgba(255, 255, 255);
-              border-radius: 50%;
-              position: absolute;
-              top: 1px;
-              right: -27px;
-              z-index: 1;
+            content: '';
+            width: 18px;
+            height: 18px;
+
+            background-color: rgba(255, 255, 255);
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            right: -27px;
+            z-index: 1;
           }
-  
         }
-  
+
         .switcher {
           display: none;
         }
-  
+
         .switcher:checked + .switcher-tex::before {
           right: -38px;
         }
       }
     }
   }
-
 }
-

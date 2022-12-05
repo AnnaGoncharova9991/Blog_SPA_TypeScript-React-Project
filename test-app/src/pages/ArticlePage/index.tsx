@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { articlesActionCreators } from '../../redux/actions/articlesActionCreators';
 import { articlesPostsArticlesSelector } from '../../redux/selectors/articlesSelectors';
 import { Link } from 'react-router-dom';
-import './ArticlePage.scss'
+import './ArticlePage.scss';
 
 const ArticlePage = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ const ArticlePage = () => {
           </div>
           <h2 className='article-post-title'>{article.title}</h2>
           <div className='article-post-img-wrapper'>
-            <img className='article-post-img' src={`${article.imageUrl}`}/>
+            <img className='article-post-img' src={`${article.imageUrl}`} />
           </div>
           <div className='article-post-text-wrapper'>
             <article>{article.summary}</article>
@@ -36,7 +36,8 @@ const ArticlePage = () => {
           <div className='social-links-wrapper'>
             <div className='social-links-item'>
               <a href='https://www.facebook.com/'>
-                <img className='facebook'
+                <img
+                  className='facebook'
                   src={require('../../img/facebook.svg').default}
                   alt='facebook'
                 />
@@ -44,7 +45,8 @@ const ArticlePage = () => {
             </div>
             <div className='social-links-item'>
               <a href='https://twitter.com/'>
-                <img className='twitter'
+                <img
+                  className='twitter'
                   src={require('../../img/twitter.svg').default}
                   alt='twitter'
                 />

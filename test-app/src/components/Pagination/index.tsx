@@ -1,3 +1,4 @@
+import React from 'react';
 import { usePagination } from '../../redux/hooks';
 import { IPaginationProps } from '../../types/paginationTypes';
 import { DOTS } from '../../constants';
@@ -83,4 +84,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

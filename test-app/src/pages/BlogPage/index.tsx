@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { blogsActionCreators } from '../../redux/actions/blogsActionCreators';
 import { blogsPostsBlogsSelector } from '../../redux/selectors/blogsSelectors';
 import { Link } from 'react-router-dom';
-import './BlogPage.scss'
+import './BlogPage.scss';
 
 const BlogPage = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ const BlogPage = () => {
           </div>
           <h2 className='blog-post-title'>{blog.title}</h2>
           <div className='blog-post-img-wrapper'>
-            <img className='blog-post-img' src={`${blog.imageUrl}`}/>
+            <img className='blog-post-img' src={`${blog.imageUrl}`} />
           </div>
           <div className='blog-post-text-wrapper'>
             <article>{blog.summary}</article>
@@ -36,7 +36,8 @@ const BlogPage = () => {
           <div className='social-links-wrapper'>
             <div className='social-links-item'>
               <a href='https://www.facebook.com/'>
-                <img className='facebook'
+                <img
+                  className='facebook'
                   src={require('../../img/facebook.svg').default}
                   alt='facebook'
                 />
@@ -44,7 +45,8 @@ const BlogPage = () => {
             </div>
             <div className='social-links-item'>
               <a href='https://twitter.com/'>
-                <img className='twitter'
+                <img
+                  className='twitter'
                   src={require('../../img/twitter.svg').default}
                   alt='twitter'
                 />

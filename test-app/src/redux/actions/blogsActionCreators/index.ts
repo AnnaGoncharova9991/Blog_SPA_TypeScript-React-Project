@@ -22,20 +22,19 @@ import {
 
 export const blogsActionCreators = {
   // redux-saga
-  getBlogs: ( sort : string) => {
+  getBlogs: (sort: string) => {
     return {
       type: GET_BLOGS,
-      payload: { sort }
+      payload: { sort },
     };
   },
 
-  getOneBlog: ( id : string) => {
+  getOneBlog: (id: string) => {
     return {
       type: GET_ONE_BLOG,
-      payload: {id}
+      payload: { id },
     };
   },
-
 
   setPagesCount: () => {
     return {
@@ -108,20 +107,19 @@ export const blogsActionCreators = {
     };
   },
 
-    setBlogsSort: (sort: string) => {
-        return { 
-            type: SET_BLOGS_SORT,
-            payload: sort
-        };
-    },
+  setBlogsSort: (sort: string) => {
+    return {
+      type: SET_BLOGS_SORT,
+      payload: sort,
+    };
+  },
 
-    getBlogsWithSort: (sort: string) => {
-        return { 
-            type: GET_BLOGS_WITH_SORT,
-            payload: sort
-        };
-    },
-
+  getBlogsWithSort: (sort: string) => {
+    return {
+      type: GET_BLOGS_WITH_SORT,
+      payload: sort,
+    };
+  },
 
   //with pagination
   getBlogsWithPage: (page: number | string) => {
