@@ -43,7 +43,6 @@ function* fetchOneArticle({ payload }: ReturnType<typeof articlesActionCreators.
       yield put(articlesActionCreators.getArticleSuccess(response.data));
     }
   } catch (e: any) {
-    console.log(e);
     yield put(articlesActionCreators.getArticleFailure(e?.response?.data?.detail));
   } finally {
     yield put(articlesActionCreators.setArticlesLoading(false));

@@ -49,7 +49,7 @@ const articlesReducer = (state = initialState, action: any) => {
     case SET_ARTICLES_FILTER:
       return { ...state, filter: action.payload };
     case SET_ARTICLES_SORT:
-      return { ...state, sort: action.payload };
+      return { ...state, sort: action.payload, currentPage: 1 };
     case SET_ARTICLES_PAGE:
       return { ...state, currentPage: action.payload };
     case GET_ARTICLES_PAGES_COUNT_SUCCESS:

@@ -1,0 +1,36 @@
+@import '../../global.scss';
+
+.activation-text-wrapper {
+  margin: 3rem auto;
+  .activation-text {
+    text-align: center;
+    margin: 3rem auto;
+    font-size: 2rem;
+    font-weight: 500;
+    color: $primaryColor;
+  }
+
+  .activation-btn {
+    width: 11rem;
+    padding: 0.475rem;
+    border: none;
+    border-radius: 3px;
+    background-color: $primaryColor;
+    color: $whiteColor;
+    cursor: pointer;
+    &:hover {
+      background-color: $primary2Color;
+    }
+  }
+}
+
+.container {
+    margin: auto;
+  .wrapper-activation-page {
+    p {
+      margin: auto;
+      font-size: 2rem;
+      color: red;
+    }
+  }
+}

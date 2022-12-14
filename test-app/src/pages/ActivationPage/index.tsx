@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { accountActivation } from '../../services/authServices';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
+import Preloader from '../../components/Preloader';
+import './ActivationPage.scss';
 
 const ActivationPage = () => {
   const { uid, token } = useParams();
@@ -35,10 +37,10 @@ const ActivationPage = () => {
   return (
     <>
       {isActivated ? (
-        <div>
-          <p>Your account is successfully activated!</p>
+        <div className='activation-text-wrapper'>
+          <p className='activation-text'>Your account is successfully activated!</p>
           <Link to='/login'>
-            <Button text='Go to the login page' />
+            <Button className='activation-btn' text='Go to the login page' />
           </Link>
         </div>
       ) : (
@@ -52,7 +54,7 @@ const ActivationPage = () => {
               </div>
             </>
           ) : (
-            <div>Loading...</div>
+            <Preloader/>
           )}
         </>
       )}

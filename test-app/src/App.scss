@@ -12,6 +12,11 @@ body {
   font-size: 16px;
   background-color: $secondaryExrtaLightColor;
   position: relative;
+  font-family: 'Inter', sans-serif;
+
+  @media (max-width: 520px) {
+    font-size: 14px;
+  }
 }
 
 .container {

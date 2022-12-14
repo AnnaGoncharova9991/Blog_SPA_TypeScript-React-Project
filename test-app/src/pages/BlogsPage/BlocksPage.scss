@@ -1,4 +1,27 @@
-.pagination-bar {
-  display: flex;
-  justify-content: space-between;
+@import '../../global.scss';
+
+.blogs-wrapper{
+  margin: auto;
+
+  .pagination-bar {
+    display: flex;
+    justify-content: space-between;
+  }
 }
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: $blackColor;
+  margin: 2rem 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin: 1.7rem 0.7rem;
+  }
+  @media (max-width: 520px) {
+    font-size: 1.5rem;
+    margin: 1.5rem 0.5rem;
+  }
+}
+

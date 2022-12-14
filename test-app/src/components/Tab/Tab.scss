@@ -1,8 +1,7 @@
 @import '../../global.scss';
 
 .tab-wrapper {
-  margin-top: 34px;
-  margin-bottom: 34px;
+  margin: 34px 15px;
 
   &::after {
     content: '';

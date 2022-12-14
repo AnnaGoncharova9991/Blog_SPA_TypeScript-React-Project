@@ -49,7 +49,7 @@ const blogsReducer = (state = initialState, action: any) => {
     case SET_BLOGS_FILTER:
       return { ...state, filter: action.payload };
     case SET_BLOGS_SORT:
-      return { ...state, sort: action.payload };
+      return { ...state, sort: action.payload, currentPage: 1 };
     case SET_BLOGS_PAGE:
       return { ...state, currentPage: action.payload };
     case GET_BLOGS_PAGES_COUNT_SUCCESS:

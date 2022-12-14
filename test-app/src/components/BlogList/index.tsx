@@ -1,3 +1,4 @@
+import React from 'react';
 import { IBlogPost } from '../../types/blogsTypes';
 import BlogCard from './BlogCard';
 import { Link } from 'react-router-dom';
@@ -9,21 +10,19 @@ interface IBlogList {
 
 const BlogList = ({ blogs }: IBlogList) => {
   return (
-    <ul>
-      {blogs.map((item) => {
-        return (
-          <li key={item.id}>
-            <Link to={`/blog/${item.id}`}>
-              <BlogCard
-                title={item.title}
-                imageUrl={item.imageUrl}
-                publishedAt={item.publishedAt}
-              />
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div className='list-wrapper'>
+      <ul className='blogs-list'>
+        {blogs.map((item) => {
+          return (
+            <li key={item.id}>
+              <Link to={`/blog/${item.id}`}>
+                <BlogCard title={item.title} imageUrl={item.imageUrl} publishedAt={item.publishedAt} />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

@@ -6,6 +6,9 @@ import { articlesActionCreators } from '../../redux/actions/articlesActionCreato
 import { articlesPostsArticlesSelector } from '../../redux/selectors/articlesSelectors';
 import { Link } from 'react-router-dom';
 import './ArticlePage.scss';
+import { DOTS } from '../../constants';
+import facebookImg from '../../img/facebook.png';
+import twitterImg from '../../img/twitter.png';
 
 const ArticlePage = () => {
   const dispatch = useAppDispatch();
@@ -36,25 +39,17 @@ const ArticlePage = () => {
           <div className='social-links-wrapper'>
             <div className='social-links-item'>
               <a href='https://www.facebook.com/'>
-                <img
-                  className='facebook'
-                  src={require('../../img/facebook.svg').default}
-                  alt='facebook'
-                />
-              </a>
-            </div>
-            <div className='social-links-item'>
-              <a href='https://twitter.com/'>
-                <img
-                  className='twitter'
-                  src={require('../../img/twitter.svg').default}
-                  alt='twitter'
-                />
+                <img className='facebook' src={facebookImg} alt='facebook' />
               </a>
             </div>
             <div className='social-links-item'>
               <a href='https://www.facebook.com/'>
-                <p className='dots'>...</p>
+                <img className='facebook' src={twitterImg} alt='facebook' />
+              </a>
+            </div>
+            <div className='social-links-item'>
+              <a href='#'>
+                <p className='dots'>{DOTS}</p>
               </a>
             </div>
           </div>

@@ -19,6 +19,7 @@ function* fetchBlogs() {
     const filter: string = yield select(filterBlogsSelector);
     const page: number = yield select(currentPageBlogsSelector);
     const sort: string = yield select(sortBlogsSelector);
+  
 
     const response: AxiosResponse<IBlogPost[]> = yield call(getBlogs, { filter, page, sort });
     if (response.data && response.status === 200) {
@@ -39,7 +40,6 @@ function* fetchOneBlog({ payload }: ReturnType<typeof blogsActionCreators.getOne
       yield put(blogsActionCreators.getBlogSuccess(response.data));
     }
   } catch (e: any) {
-    console.log(e);
     yield put(blogsActionCreators.getBlogsFailure(e?.response?.data?.detail));
   } finally {
     yield put(blogsActionCreators.setBlogsLoading(false));

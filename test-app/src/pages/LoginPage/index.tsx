@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import React, { useState, useCallback, useEffect, useMemo, FocusEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/Input';
 import './LoginPage.scss';
@@ -11,6 +11,8 @@ import {
   dataAuthSelector,
   isAuthAuthSelector,
 } from '../../redux/selectors/authSelectors';
+import Preloader from '../../components/Preloader';
+import { EMPTY_EMAIL, EMPTY_PASSWORD, INCORRECT_PASSWORD, REG_EMAIL } from '../../constants';
 
 const initialLoginForm = { email: '', password: '' };
 
@@ -25,6 +27,12 @@ const LoginPage = () => {
   const data = useAppSelector(dataAuthSelector);
   const isAuth = useAppSelector(isAuthAuthSelector);
 
+  const [emailWrong, setEmailWrong] = useState(false);
+  const [passwordWrong, setPasswordWrong] = useState(false);
+  const [emailError, setEmailError] = useState(EMPTY_EMAIL);
+  const [passwordError, setPasswordError] = useState(EMPTY_PASSWORD);
+  const [formValid, setFormValid] = useState(false);
+
   useEffect(() => {
     if (isAuth) {
       navigate('/blogs', { replace: true });
@@ -37,8 +45,30 @@ const LoginPage = () => {
         ...prevState,
         [e.target.id]: e.target.value,
       }));
+      switch (e.target.id) {
+        case 'email':
+          if (!REG_EMAIL.test(String(e.target.value))) {
+            setEmailError('Incorrect email');
+            if (!e.target.value) {
+              setEmailError(EMPTY_EMAIL);
+            }
+          } else {
+            setEmailError('');
+          }
+          break;
+        case 'password':
+          if (e.target.value.length < 8 || e.target.value.length > 25) {
+            setPasswordError(INCORRECT_PASSWORD);
+            if (!e.target.value) {
+              setPasswordError(EMPTY_PASSWORD);
+            }
+          } else {
+            setPasswordError('');
+          }
+          break;
+      }
     },
-    []
+    [LoginForm.email, LoginForm.password]
   );
 
   const onLoginFormSubmit = useCallback(
@@ -52,30 +82,54 @@ const LoginPage = () => {
     [dispatch, LoginForm.email, LoginForm.password]
   );
 
-  const isButtonDisabled = useMemo(() => {
-    const formValue = Object.values(LoginForm);
-    return !(formValue.filter((item) => !!item).length === formValue.length);
-  }, [LoginForm]);
+  const blurHandler = (e: FocusEvent<HTMLInputElement>) => {
+    switch (e.target.id) {
+      case 'email':
+        setEmailWrong(true);
+        break;
+      case 'password':
+        setPasswordWrong(true);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    if (emailError || passwordError) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [emailError, passwordError]);
 
   return (
     <>
       {!isLoading ? (
         <>
           <div className='container'>
-            <div className='wrapper-form'>
-              {errorMessage && <p>{errorMessage}</p>}
+            <h2>Sing In</h2>
+            <form className='wrapper-form'>
+              {errorMessage && <div className='warning-text'>{errorMessage}</div>}
               <Input
+                placeholder='Your email'
+                className='login-form-input'
                 onChange={onLoginFormChange}
                 fieldName='email'
                 value={LoginForm.email}
+                onBlur={blurHandler}
               />
+              {emailWrong && emailError && <div className='warning-text'>{emailError}</div>}
               <Input
+                placeholder='Your password'
+                className='login-form-input'
                 onChange={onLoginFormChange}
                 fieldName='password'
                 value={LoginForm.password}
+                onBlur={blurHandler}
               />
+              {passwordWrong && passwordError && <div className='warning-text'>{passwordError}</div>}
               <Button
-                disabled={isButtonDisabled}
+                className='login-form-btn'
+                disabled={!formValid}
                 type='button'
                 text='Sign in'
                 onClick={onLoginFormSubmit}
@@ -86,11 +140,11 @@ const LoginPage = () => {
                   <span className='sing-up-link'>Sing Up</span>
                 </Link>
               </div>
-            </div>
+            </form>
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <Preloader />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 import './Tab.scss';
@@ -18,7 +18,7 @@ const Tab = ({ btnsDescription, activeBtn }: ITabProps) => {
     <>
       <div className='tab-wrapper'>
         {btnsDescription.map((btn) => (
-          <Link to={btn.btnPathTo}>
+          <Link to={btn.btnPathTo} key = {btn.btnName}>
             <Button
               className={
                 activeBtn === btn.btnName ? 'tab-button active' : 'tab-button'
@@ -32,4 +32,4 @@ const Tab = ({ btnsDescription, activeBtn }: ITabProps) => {
   );
 };
 
-export default Tab;
+export default React.memo(Tab);

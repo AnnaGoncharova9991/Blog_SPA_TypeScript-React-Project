@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { articlesActionCreators } from '../../redux/actions/articlesActionCreators';
 import { blogsActionCreators } from '../../redux/actions/blogsActionCreators';
@@ -7,10 +7,13 @@ import {
   pagesCountArticlesSelector,
   currentPageArticlesSelector,
   sortArticlesSelector,
+  isLoadingArticlesSelector,
 } from '../../redux/selectors/articlesSelectors';
 import Select from '../../components/Select';
 import Pagination from '../../components/Pagination';
 import Tab from '../../components/Tab';
+import Preloader from '../../components/Preloader';
+import useWindowSize from '../../redux/hooks/useWindowSize';
 import './ArticlesPage.scss';
 import ArticlesList from '../../components/AtriclesList';
 import { OPTIONS, TAB_BUTTONS } from '../../constants';
@@ -18,9 +21,12 @@ import { OPTIONS, TAB_BUTTONS } from '../../constants';
 const ArticlesPage = () => {
   const dispatch = useAppDispatch();
   const articles = useAppSelector(articlesPostsArticlesSelector);
-  const pagesCount = useAppSelector(pagesCountArticlesSelector);
+  const pagesCount: number = useAppSelector(pagesCountArticlesSelector);
   const page: number = useAppSelector(currentPageArticlesSelector);
   const sortItem: string = useAppSelector(sortArticlesSelector);
+  const isLoading = useAppSelector(isLoadingArticlesSelector);
+
+  const size = useWindowSize();
 
   const onSortChange = useCallback(
     (sortItem: string) => {
@@ -45,24 +51,32 @@ const ArticlesPage = () => {
 
   return (
     <>
-      {pagesCount && (
+      {!isLoading ? (
         <>
-          <h2 className='articles-title'>Articles</h2>
-          <Tab btnsDescription={TAB_BUTTONS} activeBtn={'Articles'} />
-          <Select
-            options={OPTIONS}
-            onSortChange={(sortItem) => onSortChange(sortItem)}
-          />
-          <ArticlesList articles={articles} />
-          <Pagination
-            currentPage={page}
-            pageCount={pagesCount}
-            blogsPerPageLimit={12}
-            className='pagination-bar'
-            siblingCount={1}
-            onPageChange={(page) => onPageChange(page)}
-          />
+          {pagesCount && (
+            <>
+              <h2 className='articles-title'>Articles</h2>
+              {size?.width && size?.width > 520 &&<Tab btnsDescription={TAB_BUTTONS} activeBtn={'Articles'} />}
+              <Select options={OPTIONS} onSortChange={(sortItem) => onSortChange(sortItem)} />
+              <div className='articles-wrapper '>
+              <ArticlesList articles={articles} />
+              { articles.length!! &&
+                (<Pagination
+                currentPage={page}
+                pageCount={pagesCount}
+                blogsPerPageLimit={12}
+                className='pagination-bar'
+                siblingCount={1}
+                onPageChange={(page) => onPageChange(page)}
+              />)
+              }
+              
+              </div>
+            </>
+          )}
         </>
+      ) : (
+        <Preloader />
       )}
     </>
   );

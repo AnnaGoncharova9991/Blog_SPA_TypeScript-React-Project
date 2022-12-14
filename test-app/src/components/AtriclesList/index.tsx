@@ -1,3 +1,4 @@
+import React from 'react';
 import ArticleCard from './ArticleCard';
 import { IArticlePost } from '../../types/articlesTypes';
 import { Link } from 'react-router-dom';
@@ -9,22 +10,20 @@ interface IArticlesList {
 
 const ArticlesList = ({ articles }: IArticlesList) => {
   return (
-    <ul>
-      {articles.map((item) => {
-        return (
-          <li key={item.id}>
-            <Link to={`/articles/${item.id}`}>
-              <ArticleCard
-                title={item.title}
-                imageUrl={item.imageUrl}
-                publishedAt={item.publishedAt}
-              />
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div className='list-wrapper'>
+      <ul className='articles-list'>
+        {articles.map((item) => {
+          return (
+            <li key={item.id}>
+              <Link to={`/articles/${item.id}`}>
+                <ArticleCard title={item.title} imageUrl={item.imageUrl} publishedAt={item.publishedAt} />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
-export default ArticlesList;
+export default React.memo(ArticlesList);

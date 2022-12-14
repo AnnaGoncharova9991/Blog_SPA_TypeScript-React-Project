@@ -1,3 +1,4 @@
+import React from 'react';
 import './ArticleCard.scss';
 
 interface IArticleCard {
@@ -22,4 +23,4 @@ const ArticleCard = ({ title, imageUrl, publishedAt }: IArticleCard) => {
   );
 };
 
-export default ArticleCard;
+export default React.memo(ArticleCard);
