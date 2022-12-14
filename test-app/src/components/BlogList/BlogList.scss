@@ -1,19 +1,23 @@
-@import "../../global.scss";
+@import '../../global.scss';
 
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 -15px;
-  padding: 72px 0;
-
-  li {
-    width: 300px;
-    margin: 0 10px 10px 10px;
+.list-wrapper {
+  width: 100%;
+  .blogs-list {
+    width: 90%;
     display: flex;
-    align-content: stretch;
-    li:nth-last-child(n) {
-      margin-bottom: 0px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    padding: 72px 0;
+
+    li {
+      width: 300px;
+      margin: 0 10px 10px 10px;
+      display: flex;
+      align-content: stretch;
+      li:nth-last-child(n) {
+        margin-bottom: 0px;
+      }
     }
   }
 }

@@ -1,0 +1,80 @@
+@import '../../global.scss';
+
+.warning-letter-text {
+  margin: 3rem auto;
+  font-size: 2rem;
+  font-weight: 500;
+  color: $primaryColor;
+}
+
+.container {
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: $blackColor;
+    margin: 2rem 0;
+  }
+  .wrapper-form {
+    width: 30rem;
+    padding: 1.5rem 2.5rem;
+    margin: auto;
+    background: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    @media (max-width: 520px) {
+      width: 25rem;
+    }
+
+    .registration-form-input {
+      display: block;
+      width: 100%;
+      height: 2.5rem;
+      margin-bottom: 1.875rem;
+
+      &::placeholder {
+        content: '';
+        display: inline;
+        width: auto;
+        color: $secondaryLightColor;
+      }
+
+      &:focus {
+        outline-color: $primaryColor;
+      }
+    }
+  }
+
+  .registration-form-btn-wrapper {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .registration-form-btn {
+      width: 11rem;
+      padding: 0.475rem;
+      border: none;
+      border-radius: 3px;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      @media (max-width: 520px) {
+        font-size: 12px;
+      }
+      cursor: pointer;
+      &:hover {
+        background-color: $primary2Color;
+      }
+      &:disabled {
+        background-color: $secondaryLightColor;
+        color: $secondaryMediumColor;
+      }
+    }
+  }
+
+  .warning-text {
+    margin: -1.25rem 0 0.9375rem;
+    font-size: 0.875rem;
+    color: red;
+  }
+}

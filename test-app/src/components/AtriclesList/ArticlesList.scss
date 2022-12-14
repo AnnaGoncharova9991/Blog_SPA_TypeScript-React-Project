@@ -1,0 +1,23 @@
+@import '../../global.scss';
+
+.list-wrapper {
+  width: 100%;
+  .articles-list {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    padding: 72px 0;
+
+    li {
+      width: 300px;
+      margin: 0 10px 10px 10px;
+      display: flex;
+      align-content: stretch;
+      li:nth-last-child(n) {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

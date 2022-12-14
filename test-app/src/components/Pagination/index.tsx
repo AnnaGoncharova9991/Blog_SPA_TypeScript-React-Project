@@ -1,3 +1,4 @@
+import React from 'react';
 import { usePagination } from '../../redux/hooks';
 import { IPaginationProps } from '../../types/paginationTypes';
 import { DOTS } from '../../constants';
@@ -51,7 +52,7 @@ const Pagination = ({
         {paginationRange?.map((pageNumber) => {
           if (pageNumber === DOTS || pageNumber === DOTS) {
             return (
-              <li className='pagination-item dots' key={pageNumber}>
+              <li className='pagination-item dots' key={Math.random()}>
                 &#8230;
               </li>
             );
@@ -83,4 +84,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

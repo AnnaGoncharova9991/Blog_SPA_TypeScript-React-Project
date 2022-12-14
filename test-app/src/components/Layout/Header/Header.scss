@@ -1,57 +1,128 @@
 @import '../../../global.scss';
 
 header {
-    background-color: $whiteColor;
+  background-color: $whiteColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+
+  .logo-img {
+    width: 110px;
+    height: 50px;
+    background-image: url('../../../img/blogologo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex-shrink: 0;
+  }
+
+  .search-form-wpapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
+    width: 100%;
 
-    .logo-img{
-        width: 110px;
+    .search-input-fild {
+      display: block;
+      border: none;
+      width: 100%;
+      line-height: 50px;
+      color: black;
+      background-color: $whiteColor;
+      outline: none;
+      &:focus{
+        background-color: $secondaryLightColor;
+      }
+    }
+  }
+
+  .search-icon {
+    width: 16px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0);
+
+    @media (max-width: 520px) {
+      position: absolute;
+    }
+  }
+  .cross-icon {
+    width: 16px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.474);
+  }
+
+  .header-username-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    max-width: 230px;
+
+    @media (max-width: 700px) {
+      width: 130;
+    }
+
+    .userInitials {
+      width: 34px;
+      height: 34px;
+      padding: 5px;
+      margin: 0 10px 0 20px;
+      text-align: center;
+      border: solid 1px $primaryColor;
+      border-radius: 10%;
+      background-color: $primaryColor;
+
+      & p {
+        font-size: 16px;
+        font-weight: 600;
+        color: $whiteColor;
+      }
+    }
+    .username-text {
+      text-align: center;
+      margin-right: 10px;
+      @media (max-width: 768px) {
+        margin-right: 5px;
+      }
+
+      & p {
+        font-weight: 600;
+        font-size: 16px;
+        color: $blackColor;
+
+        @media (max-width: 768px) {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+    .header-logout-btn {
+      border: none;
+      background-color: $whiteColor;
+      width: 80px;
+      position: relative;
+      margin-left: 5px;
+      font-size: 12px;
+      &::before {
+        content: '';
+        display: block;
+        width: 1.5px;
         height: 50px;
-        background-image: url('../../../img/blogologo.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
+        position: absolute;
+        top: -17px;
+        left: -5px;
+        background-color: $secondaryLightColor;
+      }
+
+      @media (max-width: 768px) {
+        width: 30px;
+        top: 6px;
+      }
     }
-
-    .header-search-form-wpapper{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header-username-wrapper{
-        display: flex;
-        flex-direction: row;
-        justify-items: end;
-
-        .userInitials{
-            width: 34px;
-            height: 34px;
-            padding: 5px;
-            margin-right: 10px;
-            text-align: center;
-            border: solid 1px $primaryColor;
-            border-radius: 10%;
-            background-color: $primaryColor;           
-            
-            & p {
-                font-size: 16px;
-                font-weight: 600;
-                color: $whiteColor;
-            }
-        }
-        .username-text{
-            text-align: center;
-            & p {
-                line-height: 34px;
-                font-weight: 600;
-                font-size: 16px;
-                color: $blackColor;
-            }           
-        }
-
-    }
-
+  }
 }
-

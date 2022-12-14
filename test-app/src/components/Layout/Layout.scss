@@ -1,7 +1,15 @@
 .layout-outlet {
-    width: 90vw;
-    margin: 0 auto;
-    padding-bottom: 91px;
-    min-height: 95vh;
-    z-index: 1;
+  width: 100vw;
+  margin: auto;
+  padding-bottom: 91px;
+  padding: 0 15px 91px 0;
+  min-height: 95vh;
+  z-index: 1;
+
+  @media(max-width: 768px){
+    padding: 0 15px 72px 0;
+  }
+  @media(max-width: 520px){
+    padding: 0 10px 64px 0;
+  }
 }
